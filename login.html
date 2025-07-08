@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an Account</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Boxicons CSS for icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        :root {
+            --primary-blue: #3B82F6;
+            --background-dark: #0F172A;
+            --form-bg: #1E293B;
+            --input-bg: #334155;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --border-color: #475569;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            /* Starry Sky Background */
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+                radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+            background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px; 
+            background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background-color: var(--form-bg);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .social-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            border-radius: 8px;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .social-btn:hover {
+            background-color: #475569;
+        }
+
+        .social-btn i {
+            font-size: 20px;
+            margin-right: 8px;
+        }
+
+        .divider {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        
+        .password-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .password-label a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .password-label a:hover {
+            color: var(--primary-blue);
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+        
+        /* Specific style for the email input with value */
+        .email-input {
+            border-color: var(--primary-blue);
+        }
+
+        .input-wrapper .icon {
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-blue);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .login-link a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-header">
+            <h1>Create an account</h1>
+        </div>
+
+        <form>
+            <div class="social-login">
+                <button type="button" class="social-btn">
+                    <i class='bx bxl-google'></i> Google
+                </button>
+                <button type="button" class="social-btn">
+                    <i class='bx bxl-facebook-circle'></i> Facebook
+                </button>
+            </div>
+
+            <div class="divider">Or</div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <div class="input-wrapper">
+                    <input type="email" id="email" name="email" value="nantaputi@gmail.com" class="email-input" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="password-label">
+                    <label for="password">Password</label>
+                    <a href="#">Forgot?</a>
+                </div>
+                <div class="input-wrapper">
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <i class='bx bx-show icon'></i>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Create account</button>
+        </form>
+
+        <p class="login-link">
+            Already Have An Account? <a href="#">Log In</a>
+        </p>
+    </div>
+
+</body>
+</html>
