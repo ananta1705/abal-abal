@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kecap.AI - Product Growth Solution</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Boxicons for Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        /* --- CSS RESET & BASIC SETUP --- */
+        :root {
+            --primary-blue: #5551FF;
+            --dark-blue: #1C1C4B;
+            --text-dark: #121212;
+            --text-light: #595959;
+            --bg-light: #F7F7FD;
+            --bg-white: #FFFFFF;
+            --border-color: #E0E0E0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+        }
+
+        h1 { font-size: 52px; line-height: 1.2; }
+        h2 { font-size: 40px; line-height: 1.3; }
+        h3 { font-size: 24px; }
+        h4 { font-size: 20px; }
+        
+        p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--bg-white);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+        
+        .btn-secondary {
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* --- HEADER / NAVIGATION --- */
+        .header {
+            padding: 20px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .nav-actions .sign-in {
+            font-weight: 600;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding-top: 40px;
+        }
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-text p {
+            margin: 20px 0 30px;
+        }
+        
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .hero-features {
+            list-style: none;
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            font-weight: 500;
+        }
+
+        .hero-features li i {
+            color: var(--primary-blue);
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        .hero-rating {
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-light);
+        }
+        
+        .hero-rating .stars i {
+            color: #FFC107;
+        }
+        
+        .hero-image {
+            flex: 1;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* --- LOGOS SECTION --- */
+        .logos {
+            text-align: center;
+        }
+        .logos h4 {
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+        .logos-grid {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .logos-grid img {
+            height: 30px;
+            opacity: 0.6;
+            filter: grayscale(1);
+        }
+
+        /* --- PROCESS SECTION --- */
+        .process {
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+        .process .sub-heading {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .process h2 {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: left;
+            margin-top: 60px;
+        }
+        .process-step {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .process-step h3 {
+            margin-bottom: 15px;
+        }
+
+        /* --- CTA BANNER --- */
+        .cta-banner {
+            padding: 0;
+        }
+        .cta-banner-content {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1170&auto=format&fit=crop);
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 40px;
+            border-radius: 20px;
+        }
+        .cta-banner-content h2 {
+            max-width: 600px;
+            margin: 0 auto 15px;
+        }
+        .cta-banner-content p {
+            color: #f0f0f0;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+        .cta-banner-content .btn {
+            background-color: #FF6B6B;
+        }
+        .cta-banner-content .btn:hover {
+            opacity: 0.9;
+        }
+        
+        /* --- FEATURES SECTION --- */
+        .features {
+            text-align: center;
+            background: var(--bg-light);
+        }
+        .features h2 {
+            margin-bottom: 20px;
+        }
+        .features > p {
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: left;
+        }
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+        }
+        .feature-card .icon {
+            font-size: 32px;
+            color: var(--primary-blue);
+            background: #e9e8ff;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            margin-bottom: 10px;
+        }
+        .feature-card .read-more {
+            margin-top: 20px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            display: inline-block;
+        }
+        .features .btn {
+            margin-top: 50px;
+        }
+        
+        /* --- TESTIMONIALS SECTION --- */
+        .testimonials {
+            text-align: center;
+        }
+        .testimonials .sub-heading {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .testimonial-card {
+            margin-top: 60px;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            text-align: left;
+            position: relative;
+        }
+        .testimonial-image {
+            flex-shrink: 0;
+            width: 350px;
+            height: 400px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .testimonial-content .quote-icon {
+            font-size: 40px;
+            color: #FFA500;
+        }
+        .testimonial-content .stars {
+            margin: 15px 0;
+        }
+        .testimonial-content .stars i {
+            color: #FFC107;
+            font-size: 20px;
+        }
+        .testimonial-content p {
+            font-size: 22px;
+            font-style: italic;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .testimonial-author-info h4 {
+            font-weight: 600;
+        }
+        .testimonial-author-info span {
+            color: var(--text-light);
+        }
+        .testimonial-author img {
+            height: 30px;
+            opacity: 0.7;
+        }
+        .testimonial-nav {
+            position: absolute;
+            left: 330px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 20px;
+        }
+        .testimonial-nav button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: white;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* --- APP DOWNLOAD CTA --- */
+        .app-download {
+            background: var(--bg-light);
+            text-align: center;
+        }
+        .app-download .sub-heading {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .app-download h2 {
+            margin-bottom: 15px;
+        }
+        .app-download > p {
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+        .app-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .app-buttons .btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+        }
+        .app-buttons .btn i {
+            font-size: 24px;
+        }
+        .app-buttons .btn-dark {
+            background-color: var(--text-dark);
+            color: white;
+        }
+
+        /* --- BLOG SECTION --- */
+        .blog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+        .blog-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .blog-post-large img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+        .blog-post-meta {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+        .blog-post-large h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        .blog-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .blog-post-small {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .blog-post-small img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        .blog-post-small h4 {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        /* --- TRACKER SECTION --- */
+        .tracker {
+            background: var(--dark-blue);
+            color: white;
+            border-radius: 20px;
+        }
+        .tracker-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .tracker-text .sub-heading {
+            color: #e0e0e0;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .tracker-text h2 {
+            font-size: 42px;
+        }
+        .tracker-text p {
+            color: #c0c0c0;
+            margin-top: 20px;
+        }
+        .tracker-form input {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .tracker-form input::placeholder {
+            color: #a0a0a0;
+        }
+        .tracker-form .btn {
+            width: 100%;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            background: var(--bg-white);
+            padding-top: 80px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 2fr;
+            gap: 40px;
+            padding-bottom: 60px;
+        }
+        .footer-about .logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .footer-about p {
+            margin-bottom: 20px;
+        }
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+        }
+        .footer-socials a {
+            font-size: 24px;
+        }
+        .footer-links h4 {
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .footer-links a:hover {
+            color: var(--primary-blue);
+        }
+        .footer-newsletter-form {
+            display: flex;
+            margin-top: 10px;
+        }
+        .footer-newsletter-form input {
+            flex-grow: 1;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px 0 0 8px;
+            border-right: none;
+        }
+        .footer-newsletter-form button {
+            padding: 12px 20px;
+            border: none;
+            background: #25D366; /* Using a different color like the design */
+            color: white;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .footer-newsletter p {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding: 25px 0;
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            h1 { font-size: 40px; }
+            h2 { font-size: 32px; }
+
+            .hero-content { flex-direction: column; text-align: center; }
+            .hero-actions, .hero-features { justify-content: center; }
+            .hero-image { margin-top: 40px; }
+            
+            .process-grid, .features-grid { grid-template-columns: 1fr 1fr; }
+
+            .testimonial-card { flex-direction: column; text-align: center; }
+            .testimonial-image { width: 100%; max-width: 350px; height: auto; }
+            .testimonial-nav { display: none; }
+            .testimonial-author { justify-content: center; gap: 20px; }
+            
+            .blog-grid { grid-template-columns: 1fr; }
+            .blog-sidebar { flex-direction: row; flex-wrap: wrap; }
+
+            .tracker-content { grid-template-columns: 1fr; }
+            .tracker-text { text-align: center; }
+
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 60px 0; }
+            .nav-links { display: none; } /* Basic mobile menu handling */
+
+            .process-grid, .features-grid, .blog-main { grid-template-columns: 1fr; }
+            
+            .app-buttons { flex-direction: column; align-items: center; }
+
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-about, .footer-links { align-items: center; }
+            .footer-socials { justify-content: center; }
+            .footer-newsletter-form { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- === HEADER === -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="nav-logo">KECAP.AI</a>
+                <ul class="nav-links">
+                    <li><a href="#">Product <i class='bx bxs-chevron-down'></i></a></li>
+                    <li><a href="#">Template <i class='bx bxs-chevron-down'></i></a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Pricing</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#" class="sign-in">Sign In</a>
+                    <a href="#" class="btn btn-primary">Start Free</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- === HERO SECTION === -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Mulai Bisnismu dengan Mudah. Kecap.AI, Solusi Pembayaran untuk Pemula</h1>
+                        <p>Kecap.AI hadir untuk menyederhanakan pengelolaan pembayaran bisnismu dari nol. Nikmati laporan keuangan yang jelas, efisiensi waktu, dan otomatisasi cerdas yang memungkinkanmu fokus pada pertumbuhan produk dan penjualan.</p>
+                        <div class="hero-actions">
+                            <a href="#" class="btn btn-primary">Mulai Sekarang Gratis</a>
+                            <a href="#" class="btn btn-secondary">Jelajahi Solusi</a>
+                        </div>
+                        <ul class="hero-features">
+                            <li><i class='bx bx-check-circle'></i> Manajemen Invoice Mudah</li>
+                            <li><i class='bx bx-check-circle'></i> Keamanan Terjamin</li>
+                            <li><i class='bx bx-check-circle'></i> Skalabilitas Bisnis</li>
+                        </ul>
+                        <div class="hero-rating">
+                            <span class="stars">
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star-half'></i>
+                                <strong>4.5</strong>
+                            </span>
+                            <span>1.4k Ratings</span>
+                            <span>|</span>
+                            <span><i class='bx bx-check-circle'></i> Great Service</span>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://i.ibb.co/6PqjXf2/hero-dashboard-img.png" alt="Dashboard Preview">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === LOGOS SECTION === -->
+        <section class="logos">
+            <div class="container">
+                <h4>Solusi Pilihan untuk Pertumbuhan Bisnis</h4>
+                <div class="logos-grid">
+                    <img src="https://logodownload.org/wp-content/uploads/2019/09/oracle-logo.png" alt="Oracle">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Morpheus_logo.svg/2560px-Morpheus_logo.svg.png" alt="Morpheus">
+                    <img src="https://logodownload.org/wp-content/uploads/2014/01/samsung-logo-4.png" alt="Samsung">
+                    <img src="https://logodownload.org/wp-content/uploads/2022/02/monday-logo-1.png" alt="Monday.com">
+                    <img src="https://logodownload.org/wp-content/uploads/2020/03/segment-logo.png" alt="Segment">
+                    <img src="https://logodownload.org/wp-content/uploads/2022/10/protonet-logo-0.png" alt="Protonet">
+                </div>
+            </div>
+        </section>
+
+        <!-- === PROCESS SECTION === -->
+        <section class="process">
+            <div class="container">
+                <p class="sub-heading">PROSES KAMI MENUJU KESUKSESAN ANDA</p>
+                <h2>Transformasi Ide Anda: Didukung Tim Ahli dan Proses Efektif</h2>
+                <div class="process-grid">
+                    <div class="process-step">
+                        <h3>1. Project Discovery Call</h3>
+                        <p>Kami memulai dengan mendengarkan visi, tantangan, dan tujuan Anda secara mendalam. Diskusi awal ini penting untuk memahami kebutuhan unik Anda.</p>
+                    </div>
+                    <div class="process-step">
+                        <h3>2. Strategic Planning</h3>
+                        <p>Berdasarkan pemahaman kami, tim ahli akan menyusun strategi yang disesuaikan dan merancang solusi inovatif. Kami akan mempresentasikan rencana detail.</p>
+                    </div>
+                    <div class="process-step">
+                        <h3>3. Execution & Development</h3>
+                        <p>Setelah rencana disepakati, kami memulai implementasi dengan fokus pada kualitas dan efisiensi. Kami akan terus berkomunikasi dan memberikan dukungan penuh.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- === CTA BANNER === -->
+        <section class="cta-banner">
+            <div class="container">
+                <div class="cta-banner-content">
+                    <h2>Kembangkan Produkmu Lebih Cepat: Solusi Tepat untuk Bisnis Pemula</h2>
+                    <p>Satu Solusi Lengkap untuk Pembayaran dan Keuangan Bisnis. Temukan Platform yang Tepat untuk Memulai dan Berkembang</p>
+                    <a href="#" class="btn">Mulai Bisnismu Sekarang</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- === FEATURES SECTION === -->
+        <section class="features">
+            <div class="container">
+                <h2>Percepat Pertumbuhan Bisnismu, Bahkan Sejak Hari Pertama</h2>
+                <p>Kami menyediakan solusi yang dirancang khusus untuk mempercepat pertumbuhan bisnis Anda, mengurangi beban kerja, dan membantu Anda membuat keputusan yang lebih cerdas sejak dini.</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="icon"><i class='bx bx-trophy'></i></div>
+                        <h3>Administrasi Bisnis Simple</h3>
+                        <p>"Mudahkan pengelolaan keuangan bisnis Anda. Sistem kami bantu atur transaksi, pantau arus kas, dan buat laporan keuangan otomatis.</p>
+                        <a href="#" class="read-more">Read More <i class='bx bx-right-arrow-alt'></i></a>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon"><i class='bx bxs-florist'></i></div>
+                        <h3>Pemasaran Efektif</h3>
+                        <p>Manfaatkan fitur kami untuk promosi produk efektif. Dari integrasi pembayaran online hingga alat pemasaran yang menjangkau lebih banyak calon pelanggan.</p>
+                        <a href="#" class="read-more">Read More <i class='bx bx-right-arrow-alt'></i></a>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon"><i class='bx bx-sun'></i></div>
+                        <h3>Dukungan Bisnis Penuh</h3>
+                        <p>Untuk bisnismu, kami berikan alat, panduan, dan dukungan ahli. Pastikan setiap keputusan terbaik demi pertumbuhan yang berkelanjutan.</p>
+                        <a href="#" class="read-more">Read More <i class='bx bx-right-arrow-alt'></i></a>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary">Pelajari Lebih Lanjut →</a>
+            </div>
+        </section>
+
+        <!-- === TESTIMONIALS SECTION === -->
+        <section class="testimonials">
+            <div class="container">
+                <p class="sub-heading">TESTIMONIALS</p>
+                <h2>Check what our clients are saying</h2>
+                <div class="testimonial-card">
+                    <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=987&auto=format&fit=crop" alt="Testimonial author" class="testimonial-image">
+                    <div class="testimonial-nav">
+                        <button><i class='bx bx-chevron-left'></i></button>
+                        <button><i class='bx bx-chevron-right'></i></button>
+                    </div>
+                    <div class="testimonial-content">
+                        <i class='bx bxs-quote-alt-left quote-icon'></i>
+                        <div class="stars">
+                            <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                        </div>
+                        <p>Is be upon sang fond must shew. Really boy law county she unable her sister. Feet you off its like six. Among sex are leave law built now.</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-author-info">
+                                <h4>AR Shakir</h4>
+                                <span>CEO GetNextDesign</span>
+                            </div>
+                            <img src="https://logodownload.org/wp-content/uploads/2020/03/segment-logo.png" alt="Segment logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === APP DOWNLOAD SECTION === -->
+        <section class="app-download">
+            <div class="container">
+                <p class="sub-heading">PROJECT MANAGEMENT APP</p>
+                <h2>Download our app and start your free trail to get started today!</h2>
+                <p>End-to-end payments and financial management in a single solution.</p>
+                <div class="app-buttons">
+                    <a href="#" class="btn btn-primary"><i class='bx bxl-apple' ></i> Playstore</a>
+                    <a href="#" class="btn btn-dark"><i class='bx bxl-google-play' ></i> Google Play</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- === BLOG SECTION === -->
+        <section class="blog">
+            <div class="container">
+                <div class="blog-header">
+                    <h2>Our Latest Blog Posts</h2>
+                    <a href="#" class="btn btn-primary">See All Blog Posts</a>
+                </div>
+                <div class="blog-grid">
+                    <div class="blog-main">
+                        <div class="blog-post-large">
+                            <img src="https://images.unsplash.com/photo-1520428196593-31742438b813?q=80&w=1170&auto=format&fit=crop" alt="Blog post image">
+                            <p class="blog-post-meta">08-11-2021 | Category</p>
+                            <h3>Believing neglected so so allowance existence departure.</h3>
+                            <p>Blessing welcomed ladyship she met humoured sir breeding her. Six curiosity day assurance bed necessary.</p>
+                        </div>
+                        <div class="blog-post-large">
+                            <img src="https://images.unsplash.com/photo-1470219556762-1771e7f9427d?q=80&w=1148&auto=format&fit=crop" alt="Blog post image">
+                            <p class="blog-post-meta">08-11-2021 | Category</p>
+                            <h3>In design active temper be uneasy. Thirty for remove plenty regard you.</h3>
+                            <p>Yet preference connection unpleasant yet melancholy but end appearance. And excellence partiality estimating terminated day everything.</p>
+                        </div>
+                    </div>
+                    <div class="blog-sidebar">
+                        <div class="blog-post-small">
+                            <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=1000&auto=format&fit=crop" alt="small blog post">
+                            <div>
+                                <p class="blog-post-meta">08-11-2021 | Category</p>
+                                <h4>Partiality on or continuing in particular principles</h4>
+                            </div>
+                        </div>
+                        <div class="blog-post-small">
+                            <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=1171&auto=format&fit=crop" alt="small blog post">
+                            <div>
+                                <p class="blog-post-meta">08-11-2021 | Category</p>
+                                <h4>Do believing oh disposing to supported allowance we.</h4>
+                            </div>
+                        </div>
+                        <div class="blog-post-small">
+                            <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?q=80&w=988&auto=format&fit=crop" alt="small blog post">
+                            <div>
+                                <p class="blog-post-meta">08-11-2021 | Category</p>
+                                <h4>Village did removed enjoyed explain nor ham saw.</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === TRACKER SECTION === -->
+        <section class="tracker">
+            <div class="container">
+                <div class="tracker-content">
+                    <div class="tracker-text">
+                        <p class="sub-heading">WHY CHOOSE US</p>
+                        <h2>Track your crytpo portfolio on the best way possible</h2>
+                        <p>Mean if he they been no hold mr. Is at much do made. Latter person am secure of estate genius at.</p>
+                    </div>
+                    <div class="tracker-form">
+                        <form>
+                            <input type="email" placeholder="Email Address">
+                            <input type="password" placeholder="Password">
+                            <button type="submit" class="btn btn-primary">GET STARTED</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- === FOOTER === -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3 class="logo">KECAP.AI</h3>
+                    <p>Simple innate summer fat appear basket his desire joy.</p>
+                    <div class="footer-socials">
+                        <a href="#"><i class='bx bxl-linkedin-square'></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                        <a href="#"><i class='bx bxl-vimeo' ></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Templates</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Free resources</a></li>
+                        <li><a href="#">Contract templates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Join Our Newsletter</h4>
+                    <form class="footer-newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                    <p>* Will send you weekly updates for your better finance management.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright @Kecap.ai 2025. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
