@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Input Informasi Usaha</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+  <div class="max-w-2xl mx-auto py-10 px-4">
+    <!-- Header -->
+    <div class="mb-8 text-center">
+      <h1 class="text-2xl md:text-3xl font-bold text-blue-600">Langkah Awal Anda: Masukkan Informasi Usaha</h1>
+      <p class="mt-2 text-gray-600">Mohon isi detail berikut agar AI kami dapat memberikan analisis yang paling akurat.</p>
+    </div>
+
+    <!-- Formulir Utama -->
+    <form class="space-y-8">
+      <!-- Modal Tersedia -->
+      <div class="bg-white p-6 rounded-2xl shadow">
+        <h2 class="text-lg font-semibold mb-4">1. Modal Tersedia</h2>
+        <label class="block mb-2 font-medium">Jumlah Modal Investasi (IDR)</label>
+        <input type="number" placeholder="Contoh: 50000000" class="w-full p-3 border rounded-lg mb-2" />
+        <p class="text-sm text-gray-500 mb-4">Misal: 50.000.000. Sertakan total dana tunai, pinjaman, atau nilai aset.</p>
+
+        <label class="block mb-2 font-medium">Sumber Modal (opsional)</label>
+        <select class="w-full p-3 border rounded-lg">
+          <option value="">Pilih sumber modal</option>
+          <option>Tabungan Pribadi</option>
+          <option>Pinjaman Bank</option>
+          <option>Investor</option>
+          <option>Lainnya</option>
+        </select>
+      </div>
+
+      <!-- Keahlian Utama -->
+      <div class="bg-white p-6 rounded-2xl shadow">
+        <h2 class="text-lg font-semibold mb-4">2. Keahlian Utama Anda</h2>
+        <label class="block mb-2 font-medium">Bidang Keahlian / Minat Utama</label>
+        <select class="w-full p-3 border rounded-lg mb-2">
+          <option value="">Pilih bidang</option>
+          <option>Kuliner</option>
+          <option>Teknologi</option>
+          <option>Kerajinan</option>
+          <option>Jasa</option>
+          <option>Pertanian</option>
+        </select>
+        <input type="text" placeholder="Atau ketik sendiri..." class="w-full p-3 border rounded-lg" />
+        <p class="text-sm text-gray-500 mt-2">Pilih atau jelaskan bidang yang Anda kuasai atau minati.</p>
+      </div>
+
+      <!-- Lokasi Usaha -->
+      <div class="bg-white p-6 rounded-2xl shadow">
+        <h2 class="text-lg font-semibold mb-4">3. Lokasi Usaha Impian Anda</h2>
+        <label class="block mb-2 font-medium">Lokasi Usaha (Kota/Kabupaten, Provinsi)</label>
+        <input type="text" placeholder="Contoh: Banjarnegara, Jawa Tengah" class="w-full p-3 border rounded-lg mb-2" />
+        <p class="text-sm text-gray-500 mb-4">Semakin spesifik, semakin akurat analisisnya (misal: 'Kecamatan X, Banjarnegara').</p>
+
+        <button type="button" class="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-300">
+          🗺️ Pilih Lokasi di Peta
+        </button>
+      </div>
+
+      <!-- CTA Button -->
+      <div class="text-center">
+        <button type="submit" class="bg-blue-600 text-white text-lg font-semibold py-3 px-8 rounded-full shadow-md hover:bg-blue-700">
+          🚀 Mulai Analisis
+        </button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
