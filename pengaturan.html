@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pengaturan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+  <div class="max-w-3xl mx-auto py-12 px-4 space-y-10">
+    <!-- Judul Halaman -->
+    <div class="text-center">
+      <h1 class="text-3xl font-bold text-blue-700">⚙️ Pengaturan Aplikasi</h1>
+      <p class="text-gray-600 mt-2">Sesuaikan preferensi notifikasi, privasi, dan tampilan antarmuka sesuai kebutuhan Anda.</p>
+    </div>
+
+    <!-- Pengaturan Notifikasi -->
+    <div class="bg-white p-6 rounded-xl shadow">
+      <h2 class="text-xl font-semibold mb-4">🔔 Notifikasi</h2>
+      <div class="space-y-4">
+        <label class="flex items-center justify-between">
+          <span>Notifikasi Status Analisis</span>
+          <input type="checkbox" checked class="toggle toggle-primary">
+        </label>
+        <label class="flex items-center justify-between">
+          <span>Rekomendasi Bisnis Baru</span>
+          <input type="checkbox" class="toggle toggle-primary">
+        </label>
+        <label class="flex items-center justify-between">
+          <span>Pembaruan Aplikasi</span>
+          <input type="checkbox" checked class="toggle toggle-primary">
+        </label>
+      </div>
+    </div>
+
+    <!-- Pengaturan Privasi -->
+    <div class="bg-white p-6 rounded-xl shadow">
+      <h2 class="text-xl font-semibold mb-4">🔐 Privasi</h2>
+      <div class="space-y-4">
+        <label class="flex items-center justify-between">
+          <span>Izinkan penggunaan data untuk personalisasi</span>
+          <input type="checkbox" checked class="toggle toggle-primary">
+        </label>
+        <label class="flex items-center justify-between">
+          <span>Izinkan pelacakan lokasi saat analisis</span>
+          <input type="checkbox" class="toggle toggle-primary">
+        </label>
+      </div>
+    </div>
+
+    <!-- Preferensi Tampilan -->
+    <div class="bg-white p-6 rounded-xl shadow">
+      <h2 class="text-xl font-semibold mb-4">🎨 Preferensi Tampilan</h2>
+      <div class="space-y-4">
+        <label class="flex items-center justify-between">
+          <span>Tema Gelap</span>
+          <input type="checkbox" class="toggle toggle-primary">
+        </label>
+        <label class="flex items-center justify-between">
+          <span>Ukuran Teks Lebih Besar</span>
+          <input type="checkbox" class="toggle toggle-primary">
+        </label>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
