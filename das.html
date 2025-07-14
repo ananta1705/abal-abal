@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3D00B5',
+            indigoDark: '#1A237E',
+            background: '#F5F7FA',
+            accent: '#00BCD4',
+            success: '#4CAF50',
+            textMain: '#212121',
+            textSecondary: '#757575'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background font-sans text-textMain">
+  <div class="max-w-6xl mx-auto py-12 px-4 space-y-10">
+    <!-- Judul Halaman -->
+    <div class="text-center">
+      <h1 class="text-3xl font-bold text-primary">📊 Dashboard</h1>
+      <p class="text-textSecondary mt-2">Ringkasan analisis dan aktivitas Anda.</p>
+    </div>
+
+    <!-- Statistik Ringkasan -->
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded-xl shadow text-center">
+        <h2 class="text-sm text-textSecondary">Total Analisis</h2>
+        <p class="text-3xl font-bold text-primary">12</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow text-center">
+        <h2 class="text-sm text-textSecondary">Analisis Terbaru</h2>
+        <p class="text-sm">Kopi Senja <span class="text-success font-semibold">(85%)</span></p>
+        <p class="text-sm">Laundry Express <span class="text-success font-semibold">(78%)</span></p>
+        <p class="text-sm">Sambal Ndeso <span class="text-success font-semibold">(72%)</span></p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow text-center">
+        <h2 class="text-sm text-textSecondary">Notifikasi Belum Dibaca</h2>
+        <p class="text-3xl font-bold text-red-500">3</p>
+      </div>
+    </div>
+
+    <!-- Akses Cepat -->
+    <div class="text-center">
+      <a href="/analisis" class="inline-block bg-accent text-white font-semibold py-3 px-6 rounded-full shadow hover:opacity-90">
+        🚀 Mulai Analisis Baru
+      </a>
+    </div>
+
+    <!-- Semua Halaman (All Pages Section - Opsional) -->
+    <div class="mt-12">
+      <h2 class="text-lg font-semibold text-textMain mb-2">📚 Semua Halaman</h2>
+      <p class="text-sm text-textSecondary mb-4">Daftar halaman utama dalam platform ini.</p>
+      <ul class="grid md:grid-cols-3 gap-4 text-sm text-primary list-disc pl-6">
+        <li><a href="/dashboard" class="hover:underline">Dashboard</a></li>
+        <li><a href="/analisis" class="hover:underline">Input Informasi Usaha</a></li>
+        <li><a href="/portofolio" class="hover:underline">Portofolio Bisnis</a></li>
+        <li><a href="/riwayat-analisis" class="hover:underline">Riwayat Analisis</a></li>
+        <li><a href="/notifikasi" class="hover:underline">Notifikasi</a></li>
+        <li><a href="/pengaturan" class="hover:underline">Pengaturan</a></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
