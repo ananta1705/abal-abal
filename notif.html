@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -54,4 +55,62 @@
     </div>
   </div>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notifikasi & Pesan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+  <div class="max-w-5xl mx-auto py-12 px-4 space-y-8">
+    <!-- Judul Halaman -->
+    <div class="text-center">
+      <h1 class="text-3xl font-bold text-blue-700">Notifikasi & Pesan</h1>
+      <p class="text-gray-600 mt-2">Lihat pembaruan sistem, status analisis, rekomendasi terbaru, atau pesan dari tim support.</p>
+    </div>
+
+    <!-- Daftar Notifikasi -->
+    <div class="space-y-4">
+      <!-- Contoh Notifikasi -->
+      <div class="bg-white p-4 rounded-xl shadow border-l-4 border-blue-500">
+        <div class="flex justify-between items-start">
+          <div>
+            <h2 class="font-semibold text-lg text-blue-700">Analisis Anda Telah Selesai</h2>
+            <p class="text-sm text-gray-600">Potensi usaha di Banjarnegara berhasil dianalisis. Klik untuk melihat detailnya.</p>
+            <p class="text-xs text-gray-400 mt-1">10 Juli 2025 • Tipe: analysis_complete</p>
+          </div>
+          <div class="space-x-2">
+            <a href="/hasil-analisis" class="text-sm text-blue-600 hover:underline">Lihat Detail</a>
+            <button class="text-sm text-gray-400 hover:text-gray-600">✖ Hapus</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifikasi Lain -->
+      <div class="bg-white p-4 rounded-xl shadow border-l-4 border-green-500">
+        <div class="flex justify-between items-start">
+          <div>
+            <h2 class="font-semibold text-lg text-green-700">Rekomendasi Baru Tersedia</h2>
+            <p class="text-sm text-gray-600">Kami memiliki ide bisnis baru yang mungkin cocok untuk Anda.</p>
+            <p class="text-xs text-gray-400 mt-1">9 Juli 2025 • Tipe: new_recommendation</p>
+          </div>
+          <div class="space-x-2">
+            <a href="/rekomendasi" class="text-sm text-blue-600 hover:underline">Lihat</a>
+            <button class="text-sm text-gray-400 hover:text-gray-600">✖ Arsipkan</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifikasi Kosong -->
+      <div class="text-center text-gray-500 mt-8">
+        <p class="text-lg">Tidak ada notifikasi baru saat ini.</p>
+        <a href="/analisis" class="mt-4 inline-block bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700">🔍 Mulai Analisis Baru</a>
+      </div>
+    </div>
+  </div>
+</body>
+>>>>>>> c0ff30d6bc49395cab53c79473f77d7d88d71328
 </html>

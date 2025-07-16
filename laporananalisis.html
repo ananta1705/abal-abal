@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -66,3 +67,73 @@
   </div>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laporan & Analisis</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+  <div class="max-w-6xl mx-auto py-12 px-4 space-y-10">
+    <!-- Judul Halaman -->
+    <div class="text-center">
+      <h1 class="text-3xl font-bold text-blue-700">📈 Laporan & Analisis</h1>
+      <p class="text-gray-600 mt-2">Lihat semua riwayat analisis dan portofolio bisnis Anda yang telah dibuat.</p>
+    </div>
+
+    <!-- Filter & Pencarian -->
+    <div class="flex flex-col md:flex-row gap-4 md:items-center bg-white p-4 rounded-xl shadow">
+      <input type="text" placeholder="Cari berdasarkan nama proyek atau lokasi..." class="flex-1 p-3 border rounded-lg" />
+      <select class="p-3 border rounded-lg">
+        <option>Status</option>
+        <option>Selesai</option>
+        <option>Gagal</option>
+        <option>Dalam Proses</option>
+      </select>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">🔍 Cari</button>
+    </div>
+
+    <!-- Tabel Riwayat Analisis -->
+    <div class="bg-white p-4 rounded-xl shadow overflow-x-auto">
+      <table class="min-w-full text-sm text-left">
+        <thead>
+          <tr class="text-gray-700 border-b">
+            <th class="py-2 px-4">ID</th>
+            <th class="py-2 px-4">Nama Proyek</th>
+            <th class="py-2 px-4">Tanggal</th>
+            <th class="py-2 px-4">Lokasi Usaha</th>
+            <th class="py-2 px-4">Potensi Keberhasilan</th>
+            <th class="py-2 px-4">Status</th>
+            <th class="py-2 px-4">Aksi</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-600">
+          <tr class="border-b hover:bg-gray-50 cursor-pointer">
+            <td class="py-2 px-4">#001</td>
+            <td class="py-2 px-4">Kopi Senja</td>
+            <td class="py-2 px-4">10 Juli 2025</td>
+            <td class="py-2 px-4">Banjarnegara</td>
+            <td class="py-2 px-4">85%</td>
+            <td class="py-2 px-4 text-green-600">Selesai</td>
+            <td class="py-2 px-4 space-x-2">
+              <a href="/portofolio/001" class="text-blue-600 hover:underline">Lihat</a>
+              <button class="text-green-600 hover:underline">Unduh</button>
+            </td>
+          </tr>
+          <!-- Tambahkan baris lainnya sesuai data -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Jika Tidak Ada Data -->
+    <div class="text-center text-gray-500 mt-12">
+      <p class="text-lg">Anda belum memiliki riwayat analisis.</p>
+      <a href="/analisis" class="mt-4 inline-block bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700">🚀 Mulai Analisis Pertama Anda</a>
+    </div>
+  </div>
+</body>
+</html>
+>>>>>>> c0ff30d6bc49395cab53c79473f77d7d88d71328
