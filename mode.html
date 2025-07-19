@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kecap A.I Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-main: #f8f9fa;
+            --bg-sidebar: #ffffff;
+            --bg-card: #ffffff;
+            --primary-purple: #8338ec;
+            --gradient-purple: #a855f7;
+            --gradient-pink: #d946ef;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --green-light: #dcfce7;
+            --green-dark: #16a34a;
+            --red-light: #fee2e2;
+            --red-dark: #dc2626;
+            --yellow-light: #fef9c3;
+            --yellow-dark: #ca8a04;
+            --donut-purple: #8b5cf6;
+            --donut-blue: #3b82f6;
+            --donut-cyan: #22d3ee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+        }
+
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- Sidebar --- */
+        .sidebar {
+            width: 280px;
+            background-color: var(--bg-sidebar);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .logo-img {
+            width: 32px;
+            height: 32px;
+            margin-right: 8px;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .logo-nav {
+            margin-left: auto;
+            color: var(--text-light);
+            font-size: 12px;
+        }
+        .logo-nav i {
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .search-bar {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 10px 10px 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: #f8f9fa;
+            font-size: 14px;
+        }
+        .search-bar input::placeholder {
+            color: var(--text-light);
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 4px;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            border-radius: 6px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .sidebar-nav a i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            background-color: var(--primary-purple);
+            color: white;
+        }
+        .sidebar-nav a.active i {
+            color: white;
+        }
+
+        .nav-section {
+            margin: 20px 0;
+        }
+
+        .nav-section-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            padding: 0 12px 8px;
+            display: flex;
+            align-items: center;
+        }
+        .active-indicator {
+            width: 3px;
+            height: 20px;
+            background-color: var(--primary-purple);
+            border-radius: 2px;
+            margin-right: 9px;
+        }
+
+        .nav-section ul {
+            padding-left: 28px;
+        }
+        .nav-section a {
+            font-weight: 400;
+            color: var(--text-dark);
+        }
+        .nav-section a:hover {
+            background-color: #f1f5f9;
+            color: var(--text-dark);
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            margin-top: 24px;
+            padding: 12px;
+        }
+        .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+        .user-info .user-name {
+            font-weight: 600;
+            display: block;
+        }
+        .user-info .user-role {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            background: linear-gradient(90deg, var(--gradient-purple), var(--gradient-pink));
+            transition: transform 0.2s;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* --- Main Content --- */
+        .main-content {
+            flex: 1;
+            padding: 32px;
+            overflow-y: auto;
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 24px;
+        }
+
+        .main-header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .main-header p {
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .date-picker-btn {
+            padding: 10px 16px;
+            background-color: var(--primary-purple);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .date-picker-btn.small {
+            background-color: white;
+            color: var(--text-dark);
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .date-picker-btn i {
+            margin-left: 8px;
+        }
+        .date-picker-btn.small i {
+            margin-left: 0;
+            margin-right: 8px;
+            color: var(--text-light);
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .stat-header {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+        .stat-header .fa-ellipsis {
+            margin-left: auto;
+            cursor: pointer;
+        }
+        .stat-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: grid;
+            place-items: center;
+            margin-right: 12px;
+        }
+        .stat-icon.purple {
+            background-color: #f5f3ff;
+            color: var(--primary-purple);
+        }
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 12px 0;
+        }
+        .stat-change {
+            font-weight: 600;
+        }
+        .stat-change.up {
+            color: var(--green-dark);
+        }
+        .stat-change.down {
+            color: var(--red-dark);
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 1200px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .card-header h3 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .export-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .donut-chart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .donut-chart {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--donut-cyan) 0% 20%,
+                var(--donut-blue) 20% 70%,
+                var(--donut-purple) 70% 100%
+            );
+            position: relative;
+            display: grid;
+            place-items: center;
+        }
+        .donut-center {
+            width: 140px;
+            height: 140px;
+            background: white;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .chart-legend .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        .legend-item .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .dot.purple { background-color: var(--donut-purple); }
+        .dot.blue { background-color: var(--donut-blue); }
+        .dot.cyan { background-color: var(--donut-cyan); }
+        .legend-item span:last-child {
+            margin-left: auto;
+            color: var(--text-light);
+        }
+
+        .legend-pills {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 14px;
+            color: var(--text-light);
+            flex-wrap: wrap;
+        }
+        .pill-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .pill-value .stat-change {
+            font-size: 14px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background-color: var(--green-light);
+        }
+
+        .bar-chart {
+            height: 250px;
+            display: flex;
+        }
+        .y-axis {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-light);
+            padding-right: 16px;
+            height: 90%;
+            text-align: right;
+        }
+        .bars {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 10px;
+            align-items: flex-end;
+            border-left: 1px solid var(--border-color);
+            padding-left: 10px;
+        }
+        .bar-group {
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 2px;
+            height: 100%;
+            position: relative;
+        }
+        .bar {
+            width: 80%;
+            border-radius: 4px 4px 0 0;
+        }
+        .bar.purple { background-color: var(--donut-purple); }
+        .bar.blue { background-color: var(--donut-blue); }
+        .bar.cyan { background-color: var(--donut-cyan); }
+        .bar-group span {
+            position: absolute;
+            bottom: -20px;
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .product-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .product-item {
+            display: flex;
+            align-items: center;
+        }
+        .product-img-bg {
+            width: 48px;
+            height: 48px;
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            display: grid;
+            place-items: center;
+            font-size: 20px;
+            color: var(--text-dark);
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        .product-info {
+            font-weight: 500;
+            flex-grow: 1;
+        }
+        .product-info small {
+            display: block;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+        .product-price {
+            margin-left: auto;
+            font-weight: 600;
+            padding-left: 10px;
+        }
+
+        .line-chart {
+            height: 150px;
+            position: relative;
+            margin-top: 20px;
+        }
+        .line-chart svg {
+            width: 100%;
+            height: 100%;
+        }
+        .line-chart .x-axis {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .table-card {
+            grid-column: 1 / -1;
+            overflow-x: auto;
+        }
+
+        .order-legend {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-right: 16px;
+        }
+        .order-legend i {
+            color: var(--primary-purple);
+        }
+
+        .create-order-btn {
+            padding: 8px 16px;
+            background: linear-gradient(90deg, var(--gradient-purple), var(--gradient-pink));
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            margin-left: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+            min-width: 900px; /* Ensure table is scrollable on smaller screens */
+        }
+        th, td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+        th {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+        td {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .selected-row {
+            background-color: #f8f9fa;
+        }
+        .selected-row td:first-child {
+            border-left: 3px solid var(--primary-purple);
+        }
+        input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary-purple);
+        }
+        .name-email small {
+            display: block;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+        .status-tag {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .status-tag.green { background-color: var(--green-light); color: var(--green-dark); }
+        .status-tag.red { background-color: var(--red-light); color: var(--red-dark); }
+        .status-tag.yellow { background-color: var(--yellow-light); color: var(--yellow-dark); }
+        td:last-child {
+            text-align: right;
+            color: var(--text-light);
+        }
+        td:last-child i {
+            cursor: pointer;
+            margin-left: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://assets.codepen.io/3/K-logo-orange-blue-purple.svg" alt="Kecap A.I Logo" class="logo-img">
+                <span class="logo-text">Kecap A.I</span>
+                <div class="logo-nav">
+                    <i class="fa-solid fa-chevron-left"></i>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search for...">
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#" class="active"><i class="fa-solid fa-layer-group"></i> Dashboard</a></li>
+                    <li class="nav-section">
+                        <div class="nav-section-title">
+                            <span class="active-indicator"></span>
+                            All Pages
+                        </div>
+                        <ul>
+                            <li><a href="#">Input Informasi Usaha</a></li>
+                            <li><a href="#">Portofolio Bisnis</a></li>
+                            <li><a href="#">Notifikasi & Pesan</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="fa-solid fa-star"></i> Laporan & Analisis</a></li>
+                    <li><a href="#"><i class="fa-solid fa-user-secret"></i> Analisis AI Prediktif</a></li>
+                    <li><a href="#"><i class="fa-solid fa-dollar-sign"></i> Rekomendasi Bisnis</a></li>
+                    <li><a href="#"><i class="fa-solid fa-people-roof"></i> Manajemen Data & Akun</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                 <nav class="sidebar-nav">
+                    <ul>
+                        <li><a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a></li>
+                        <li><a href="#"><i class="fa-solid fa-book-open"></i> Bantuan & FAQ</a></li>
+                    </ul>
+                </nav>
+                <div class="user-profile">
+                    <img src="https://i.pravatar.cc/40?u=tim" alt="User Avatar">
+                    <div class="user-info">
+                        <span class="user-name">TIM B BLOJK</span>
+                        <span class="user-role">Account settings</span>
+                    </div>
+                </div>
+                <button class="cta-button">Get template <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div>
+                    <h1>Welcome back, Graf</h1>
+                    <p>Measure your advertising ROI and report website traffic.</p>
+                </div>
+                <button class="date-picker-btn">May 2027 <i class="fa-solid fa-chevron-down"></i></button>
+            </header>
+
+            <section class="stats-grid">
+                <div class="card stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon purple"><i class="fa-solid fa-heart"></i></div>
+                        <span>Save Products</span>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                    <div class="stat-value">50.8K</div>
+                    <div class="stat-change up">28.4% <i class="fa-solid fa-arrow-up"></i></div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon purple"><i class="fa-solid fa-bag-shopping"></i></div>
+                        <span>Stock Products</span>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                    <div class="stat-value">23.6K</div>
+                    <div class="stat-change down">12.6% <i class="fa-solid fa-arrow-down"></i></div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon purple"><i class="fa-solid fa-bag-shopping"></i></div>
+                        <span>Sale Products</span>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                    <div class="stat-value">756</div>
+                    <div class="stat-change up">3.1% <i class="fa-solid fa-arrow-up"></i></div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon purple"><i class="fa-solid fa-dollar-sign"></i></div>
+                        <span>Average Revenue</span>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                    <div class="stat-value">2.3K</div>
+                    <div class="stat-change up">11.3% <i class="fa-solid fa-arrow-up"></i></div>
+                </div>
+            </section>
+
+            <section class="charts-grid">
+                <div class="card chart-card">
+                    <div class="card-header">
+                        <h3>Faktor Pendukung Bisnis</h3>
+                        <button class="export-btn">Export <i class="fa-solid fa-chevron-down"></i></button>
+                    </div>
+                    <div class="donut-chart-container">
+                        <div class="donut-chart">
+                            <div class="donut-center">
+                                <span>150k</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="legend-item"><span class="dot purple"></span>Potensi Lokasi <span>30%</span></div>
+                        <div class="legend-item"><span class="dot blue"></span>Daya Beli Target Pasar <span>50%</span></div>
+                        <div class="legend-item"><span class="dot cyan"></span>Kesesuaian Keahlian <span>20%</span></div>
+                    </div>
+                </div>
+                <div class="card chart-card-large">
+                     <div class="card-header">
+                        <h3>Proyeksi Keuangan & Titik Impas</h3>
+                        <div class="legend-pills">
+                            <span class="pill-value">$240.8K <span class="stat-change up">14.8% <i class="fa-solid fa-arrow-up"></i></span></span>
+                            <span><span class="dot purple"></span> Proyeksi Pendapatan</span>
+                            <span><span class="dot blue"></span> Biaya Operasional</span>
+                            <span><span class="dot cyan"></span> Garis BEP</span>
+                        </div>
+                        <button class="date-picker-btn small"><i class="fa-solid fa-calendar-days"></i> Jan 2024 - Dec 2024 <i class="fa-solid fa-chevron-down"></i></button>
+                    </div>
+                    <div class="bar-chart">
+                        <div class="y-axis"><span>100K</span><span>80K</span><span>60K</span><span>40K</span><span>20K</span><span>0K</span></div>
+                        <div class="bars">
+                            <div class="bar-group"><div class="bar purple" style="height: 40%;"></div><div class="bar blue" style="height: 20%;"></div><div class="bar cyan" style="height: 10%;"></div><span>Jan</span></div>
+                            <div class="bar-group"><div class="bar purple" style="height: 60%;"></div><div class="bar blue" style="height: 10%;"></div><div class="bar cyan" style="height: 20%;"></div><span>Feb</span></div>
+                            <div class="bar-group"><div class="bar purple" style="height: 80%;"></div><div class="bar blue" style="height: 10%;"></div><div class="bar cyan" style="height: 10%;"></div><span>Mar</span></div>
+                            <div class="bar-group"><div class="bar purple" style="height: 45%;"></div><div class="bar blue" style="height: 20%;"></div><div class="bar cyan" style="height: 20%;"></div><span>Apr</span></div>
+                            <div class="bar-group"><div class="bar purple" style="height: 30%;"></div><div class="bar blue" style="height: 20%;"></div><div class="bar cyan" style="height: 15%;"></div><span>May</span></div>
+                            <div class="bar-group"><div class="bar purple" style="height: 50%;"></div><div class="bar blue" style="height: 30%;"></div><div class="bar cyan" style="height: 15%;"></div><span>Jun</span></div>
+                            <div class="bar-group"><div class="bar purple" style="height: 40%;"></div><div class="bar blue" style="height: 5%;"></div><div class="bar cyan" style="height: 5%;"></div><span>Jul</span></div>
+                            <div class="bar-group"><div class="bar purple" style="height: 25%;"></div><div class="bar blue" style="height: 35%;"></div><div class="bar cyan" style="height: 25%;"></div><span>Aug</span></div>
+                            <div class="bar-group"><div class="bar purple" style="height: 40%;"></div><div class="bar blue" style="height: 15%;"></div><div class="bar cyan" style="height: 10%;"></div><span>Sep</span></div>
+                            <div class="bar-group"><div class="bar purple" style="height: 15%;"></div><div class="bar blue" style="height: 40%;"></div><div class="bar cyan" style="height: 25%;"></div><span>Oct</span></div>
+                            <div class="bar-group"><div class="bar purple" style="height: 30%;"></div><div class="bar blue" style="height: 25%;"></div><div class="bar cyan" style="height: 15%;"></div><span>Nov</span></div>
+                            <div class="bar-group"><div class="bar purple" style="height: 55%;"></div><div class="bar blue" style="height: 10%;"></div><div class="bar cyan" style="height: 20%;"></div><span>Dec</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="charts-grid">
+                <div class="card">
+                     <div class="card-header">
+                        <h3>Ide Bisnis Rekomendasi</h3>
+                    </div>
+                    <div class="product-list">
+                        <div class="product-item">
+                            <div class="product-img-bg"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                            <div class="product-info">
+                                <span>iPhone 14 Pro Max</span>
+                                <small>524 in stock</small>
+                            </div>
+                            <span class="product-price">$ 1,099.00</span>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-img-bg"><i class="fa-solid fa-stopwatch"></i></div>
+                            <div class="product-info">
+                                <span>Apple Watch S8</span>
+                                <small>320 in stock</small>
+                            </div>
+                            <span class="product-price">$ 799.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card chart-card-large">
+                     <div class="card-header">
+                        <h3>Progres Perencanaan Bisnis</h3>
+                        <div class="legend-pills">
+                            <span class="pill-value">257 <span class="stat-change up">16.8% <i class="fa-solid fa-arrow-up"></i></span></span>
+                        </div>
+                        <button class="date-picker-btn small"><i class="fa-solid fa-calendar-days"></i> Jan 2024 <i class="fa-solid fa-chevron-down"></i></button>
+                    </div>
+                    <div class="line-chart">
+                        <svg viewBox="0 0 500 150" preserveAspectRatio="none">
+                             <path d="M 0 80 L 70 70 L 140 100 L 210 40 L 280 90 L 350 75 L 420 110 L 500 85" stroke="#00bfff" stroke-width="3" fill="none"/>
+                        </svg>
+                        <div class="x-axis">
+                            <span>Jan 1</span><span>Jan 8</span><span>Jan 16</span><span>Jan 24</span><span>Jan 31</span><span>Feb 1</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="card table-card">
+                 <div class="card-header">
+                    <h3>Status Portofolio Bisnis</h3>
+                    <div>
+                         <span class="order-legend"><i class="fa-solid fa-minus"></i> Order</span>
+                        <button class="date-picker-btn small"><i class="fa-solid fa-calendar-days"></i> Jan 2025 <i class="fa-solid fa-chevron-down"></i></button>
+                        <button class="create-order-btn">Create order</button>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox"></th>
+                            <th>Order</th>
+                            <th>Ide Bisnis</th>
+                            <th>Tanggal Analisis</th>
+                            <th>Status Progres</th>
+                            <th>Kecocokan</th>
+                            <th>Skor Viability</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="selected-row">
+                            <td><input type="checkbox" checked></td>
+                            <td>#1532</td>
+                            <td>Warung Kopi Kekinian</td>
+                            <td>Jan 30, 2024</td>
+                            <td><span class="status-tag green">Blueprint Selesai</span></td>
+                            <td>Tinggi</td>
+                            <td>88%</td>
+                            <td><i class="fa-solid fa-pencil"></i> <i class="fa-solid fa-trash-can"></i></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>#1531</td>
+                            <td>
+                                <div class="name-email">
+                                    <span>Sophie Moore</span>
+                                    <small>contact@sophiemoore.com</small>
+                                </div>
+                            </td>
+                            <td>Jan 27, 2024</td>
+                            <td><span class="status-tag red">RAB Dibuat</span></td>
+                            <td>Sedang</td>
+                            <td>75%</td>
+                            <td><i class="fa-solid fa-pencil"></i> <i class="fa-solid fa-trash-can"></i></td>
+                        </tr>
+                        <tr class="selected-row">
+                            <td><input type="checkbox" checked></td>
+                            <td>#1530</td>
+                            <td>
+                                 <div class="name-email">
+                                    <span>Matt Cannon</span>
+                                    <small>info@mattcannon.com</small>
+                                 </div>
+                            </td>
+                            <td>Jan 24, 2024</td>
+                            <td><span class="status-tag green">Analisis Selesai</span></td>
+                            <td>Tinggi</td>
+                            <td>82%</td>
+                            <td><i class="fa-solid fa-pencil"></i> <i class="fa-solid fa-trash-can"></i></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>#1529</td>
+                            <td>
+                                <div class="name-email">
+                                    <span>Graham Hills</span>
+                                    <small>hi@grahamhills.com</small>
+                                </div>
+                            </td>
+                            <td>Jan 21, 2024</td>
+                            <td><span class="status-tag yellow">Analisis Selesai</span></td>
+                            <td>Sedang</td>
+                            <td>68%</td>
+                            <td><i class="fa-solid fa-pencil"></i> <i class="fa-solid fa-trash-can"></i></td>
+                        </tr>
+                         <tr class="selected-row">
+                            <td><input type="checkbox" checked></td>
+                            <td>#1528</td>
+                            <td>
+                                <div class="name-email">
+                                    <span>Sandy Houston</span>
+                                    <small>contact@sandyhouston.com</small>
+                                </div>
+                            </td>
+                            <td>Jan 18, 2024</td>
+                            <td><span class="status-tag green">Menunggu Input Lanjutan</span></td>
+                            <td>Rendah</td>
+                            <td>55%</td>
+                            <td><i class="fa-solid fa-pencil"></i> <i class="fa-solid fa-trash-can"></i></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>#1527</td>
+                            <td>
+                                <div class="name-email">
+                                    <span>Andy Smith</span>
+                                    <small>hello@andysmith.com</small>
+                                </div>
+                            </td>
+                            <td>Jan 15, 2024</td>
+                            <td><span class="status-tag yellow">Analisis Selesai</span></td>
+                            <td>Tinggi</td>
+                            <td>79%</td>
+                            <td><i class="fa-solid fa-pencil"></i> <i class="fa-solid fa-trash-can"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
